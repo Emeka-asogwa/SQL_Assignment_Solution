@@ -1,0 +1,1329 @@
+Last login: Tue Oct 10 03:46:08 on ttys007
+ChukwuemekasMBP:~ casogwa$ ur_setup common primary
+-bash: ur_setup: command not found
+ChukwuemekasMBP:~ casogwa$ mysql -uroot -p 
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 36
+Server version: 5.7.19 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use MY_DATA;
+ERROR 1049 (42000): Unknown database 'my_data'
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| 455Q               |
+| MY_DATABASE        |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> USE MY_DATABAASE;
+ERROR 1049 (42000): Unknown database 'my_databaase'
+mysql> USE MY_DATABASE;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| MY_STUDENT01          |
+| STUDENT5              |
+| user_details          |
+| user_details2         |
++-----------------------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE groceries (id INTEGER PRIMAY KEY, Name TEXT, obi TEXT, ADA TEXT, Quantity INTEGER);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groceries (id INTEGER PRIMAY KEY, Name TEXT, obi TEXT, ADA TEXT, Quantity INTEGE' at line 1
+mysql> CREATE groceries (id INTEGER PRIMAY KEY, Name TEXT,Quantity INTEGER); 
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groceries (id INTEGER PRIMAY KEY, Name TEXT,Quantity INTEGER)' at line 1
+mysql> CREATE groceries (id INTEGER PRIMAY KEY, `Name` TEXT,Quantity INTEGER);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'groceries (id INTEGER PRIMAY KEY, `Name` TEXT,Quantity INTEGER)' at line 1
+mysql> CREATE TABLE groceries (id INTEGER PRIMAY KEY, Name TEXT,Quantiobi TEXT, ADA TEXT,QUantity INTEGER);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMAY KEY, Name TEXT,Quantiobi TEXT, ADA TEXT,QUantity INTEGER)' at line 1
+mysql> CREATE TABLE groceries (id INTEGER PRIMAY KEY, Name TEXT,QUantity INTEGER);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMAY KEY, Name TEXT,QUantity INTEGER)' at line 1
+mysql> CREATE TABLE `groceries` (`id` INTEGER PRIMAY KEY, `Name` TEXT,`QUantity` INTEGER);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMAY KEY, `Name` TEXT,`QUantity` INTEGER)' at line 1
+mysql> CREATE TABLE groceries(id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> CREATE TABLE groceries(id TEXT);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE CATALOGUE (id INTEGER PRIMARY KEY, Name TEXT,obi TEXT, ADA TEXT, QUantity INTEGER);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| CATALOGUE             |
+| MY_STUDENT01          |
+| STUDENT5              |
+| groceries             |
+| user_details          |
+| user_details2         |
++-----------------------+
+6 rows in set (0.00 sec)
+
+mysql> EXPLAIN CATALOGUE;
++----------+---------+------+-----+---------+-------+
+| Field    | Type    | Null | Key | Default | Extra |
++----------+---------+------+-----+---------+-------+
+| id       | int(11) | NO   | PRI | NULL    |       |
+| Name     | text    | YES  |     | NULL    |       |
+| obi      | text    | YES  |     | NULL    |       |
+| ADA      | text    | YES  |     | NULL    |       |
+| QUantity | int(11) | YES  |     | NULL    |       |
++----------+---------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO CATALOGUE VALUES (2,"BANANA", 1);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO CATALOGUE VALUES (1,"BANANA", 1);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO CATALOGUE VALUES (1,"BANANA", 4);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO CATALOGUE VALUES (1,"BANANA", 5);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO CATALOGUE VALUES (2,"BANANA", 5);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO CATALOGUE VALUES (2,"BANANA", 2);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| CATALOGUE             |
+| MY_STUDENT01          |
+| STUDENT5              |
+| groce                 |
+| groceries             |
+| user_details          |
+| user_details2         |
++-----------------------+
+7 rows in set (0.00 sec)
+
+mysql> INSERT INTO groce VALUES(1,`NA`,4);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO groce VALUES(1,`NA`,4,2);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO groce VALUES(0,`NA`,4,2);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO groce VALUES(ID,`NA`,4,2);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> SELECT *FROM CATALOGUE;
+Empty set (0.00 sec)
+
+mysql> SELECT *FROM MY_;
+MY_DATABASE       MY_STUDENT01      MY_STUDENT01.ID   MY_STUDENT01.NAME
+mysql> SELECT *FROM MY_STUDENT01;
++------+------+
+| ID   | NAME |
++------+------+
+| NULL | ME   |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO MY_STUDENT01 VALUES(`HA`);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO MY_STUDENT01 VALUES(1,`HA`);
+ERROR 1054 (42S22): Unknown column 'HA' in 'field list'
+mysql> INSERT INTO MY_STUDENT01 VALUES(1`HA`);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`HA`)' at line 1
+mysql> INSERT INTO MY_STUDENT01 VALUES(1HA);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO MY_STUDENT01 VALUES(1,HA);
+ERROR 1054 (42S22): Unknown column 'HA' in 'field list'
+mysql> INSERT INTO MY_STUDENT01 VALUES(1,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM MY_STUDENT01;
++------+------+
+| ID   | NAME |
++------+------+
+| NULL | ME   |
+|    1 | 1    |
++------+------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO MY_STUDENT01 VALUES(MNA,1);
+ERROR 1054 (42S22): Unknown column 'MNA' in 'field list'
+mysql> INSERT INTO MY_STUDENT01 VALUES(`MNA`,1);
+ERROR 1054 (42S22): Unknown column 'MNA' in 'field list'
+mysql> INSERT INTO MY_STUDENT01 VALUES("MNA",1);
+ERROR 1366 (HY000): Incorrect integer value: 'MNA' for column 'ID' at row 1
+mysql> INSERT INTO MY_STUDENT01 VALUES("MNA",2);
+ERROR 1366 (HY000): Incorrect integer value: 'MNA' for column 'ID' at row 1
+mysql> INSERT INTO MY_STUDENT01 VALUES(MNA,2);
+ERROR 1054 (42S22): Unknown column 'MNA' in 'field list'
+mysql> INSERT INTO MY_STUDENT01 VALUES(2,MNA);
+ERROR 1054 (42S22): Unknown column 'MNA' in 'field list'
+mysql> INSERT INTO MY_STUDENT01 VALUES(2,'MNA');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT *FROM MY_STUDENT01;
++------+------+
+| ID   | NAME |
++------+------+
+| NULL | ME   |
+|    1 | 1    |
+|    2 | MNA  |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO CATALOGUE VALUES(2,'MNA');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| CATALOGUE             |
+| MY_STUDENT01          |
+| STUDENT5              |
+| groce                 |
+| groceries             |
+| user_details          |
+| user_details2         |
++-----------------------+
+7 rows in set (0.00 sec)
+
+mysql> ALTER CATALOGUE ADD (ID INTEGER,NAME VARCHAR(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CATALOGUE ADD (ID INTEGER,NAME VARCHAR(10))' at line 1
+mysql> ALTER CATALOGUE ADD (ID INTEGER(5),NAME VARCHAR(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CATALOGUE ADD (ID INTEGER(5),NAME VARCHAR(10))' at line 1
+mysql> ALTER CATALOGUE ADD NAM (ID INTEGER(5),NAME VARCHAR(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CATALOGUE ADD NAM (ID INTEGER(5),NAME VARCHAR(10))' at line 1
+mysql> ALTER CATALOGUE ADD 'NAM' (ID INTEGER(5),NAME VARCHAR(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CATALOGUE ADD 'NAM' (ID INTEGER(5),NAME VARCHAR(10))' at line 1
+mysql> ALTER CATALOGUE ADD 'NAM' (ID INTEGER(5),'NAME' VARCHAR(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CATALOGUE ADD 'NAM' (ID INTEGER(5),'NAME' VARCHAR(10))' at line 1
+mysql> ALTER CATALOGUE ADD 'NAM' (ID INTEGER(5));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CATALOGUE ADD 'NAM' (ID INTEGER(5))' at line 1
+mysql> ALTER CATALOGUE ADD (ID INTEGER(5));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CATALOGUE ADD (ID INTEGER(5))' at line 1
+mysql> ALTER CATALOGUE ADD (
+    -> Ç
+    -> Ç
+    -> Ç
+    -> 
+    -> EXIT
+    -> ^C
+mysql> 
+mysql> 
+[1]+  Stopped                 mysql -uroot -p
+ChukwuemekasMBP:~ casogwa$ mysql -uroot -p 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+ChukwuemekasMBP:~ casogwa$ mysql -uroot -p 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+ChukwuemekasMBP:~ casogwa$ mysql -uroot -p 
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 41
+Server version: 5.7.19 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SELECT DATABASE();
++------------+
+| DATABASE() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> USE MY_DATABASE;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| CATALOGUE             |
+| MY_STUDENT01          |
+| STUDENT5              |
+| groce                 |
+| groceries             |
+| user_details          |
+| user_details2         |
++-----------------------+
+7 rows in set (0.00 sec)
+
+mysql> CREATE TABLE GRO (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO GE
+GEOMCOLLFROMTEXT           GEOMETRYFROMWKB           
+GEOMCOLLFROMWKB            GEOMETRYN                 
+GEOMETRY                   GEOMETRYTYPE              
+GEOMETRYCOLLECTION         GEOMFROMTEXT              
+GEOMETRYCOLLECTIONFROMTEXT GEOMFROMWKB               
+GEOMETRYCOLLECTIONFROMWKB  GET_FORMAT                
+GEOMETRYFROMTEXT           GET_LOCK                  
+mysql> INSERT INTO GR
+GRANT              GREATEST           GROUP_CONCAT      
+GRANTS             GROUP              GROUP_UNIQUE_USERS
+mysql> INSERT INTO GRO VALUES(1,"BANA",4,7);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| CATALOGUE             |
+| GRO                   |
+| MY_STUDENT01          |
+| STUDENT5              |
+| groce                 |
+| groceries             |
+| user_details          |
+| user_details2         |
++-----------------------+
+8 rows in set (0.00 sec)
+
+mysql> EXPLAIN G
+GEOMCOLLFROMTEXT           GEOMFROMWKB               
+GEOMCOLLFROMWKB            GET_FORMAT                
+GEOMETRY                   GET_LOCK                  
+GEOMETRYCOLLECTION         GLENGTH                   
+GEOMETRYCOLLECTIONFROMTEXT GLOBAL                    
+GEOMETRYCOLLECTIONFROMWKB  GRANT                     
+GEOMETRYFROMTEXT           GRANTS                    
+GEOMETRYFROMWKB            GREATEST                  
+GEOMETRYN                  GROUP                     
+GEOMETRYTYPE               GROUP_CONCAT              
+GEOMFROMTEXT               GROUP_UNIQUE_USERS        
+mysql> EXPLAIN GR
+GRANT              GREATEST           GROUP_CONCAT      
+GRANTS             GROUP              GROUP_UNIQUE_USERS
+mysql> EXPLAIN GRO;
++----------+---------+------+-----+---------+-------+
+| Field    | Type    | Null | Key | Default | Extra |
++----------+---------+------+-----+---------+-------+
+| id       | int(11) | NO   | PRI | NULL    |       |
+| name     | text    | YES  |     | NULL    |       |
+| quantity | int(11) | YES  |     | NULL    |       |
+| aisle    | int(11) | YES  |     | NULL    |       |
++----------+---------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GRO;
++----+------+----------+-------+
+| id | name | quantity | aisle |
++----+------+----------+-------+
+|  1 | BANA |        4 |     7 |
++----+------+----------+-------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO GRO VALUES(1,"BANANA",4,7);
+ERROR 1062 (23000): Duplicate entry '1' for key 'PRIMARY'
+mysql> INSERT INTO GRO VALUES(2,ORANGE,5,8);
+ERROR 1054 (42S22): Unknown column 'ORANGE' in 'field list'
+mysql> INSERT INTO GRO VALUES(2,`ORANGE`,5,8);
+ERROR 1054 (42S22): Unknown column 'ORANGE' in 'field list'
+mysql> INSERT INTO GRO VALUES(2,'ORANGE',5,8);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM GRO;
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  1 | BANA   |        4 |     7 |
+|  2 | ORANGE |        5 |     8 |
++----+--------+----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO GRO VALUES(3,'MANGO',1,4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM GRO;
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  1 | BANA   |        4 |     7 |
+|  2 | ORANGE |        5 |     8 |
+|  3 | MANGO  |        1 |     4 |
++----+--------+----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> EXPLAIN groce
+groce        groce.name   groceries    groceries.id
+mysql> EXPLAIN groce;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| name  | int(11) | NO   | PRI | NULL    |       |
++-------+---------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO groce VALUES(1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM groce;
++------+
+| name |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> MODIF
+MODIFIES MODIFY  
+mysql> help modify
+Name: 'ALTER TABLE'
+Description:
+Syntax:
+ALTER TABLE tbl_name
+    [alter_specification [, alter_specification] ...]
+    [partition_options]
+
+alter_specification:
+    table_options
+  | ADD [COLUMN] col_name column_definition
+        [FIRST | AFTER col_name ]
+  | ADD [COLUMN] (col_name column_definition,...)
+  | ADD {INDEX|KEY} [index_name]
+        [index_type] (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]] PRIMARY KEY
+        [index_type] (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]]
+        UNIQUE [INDEX|KEY] [index_name]
+        [index_type] (index_col_name,...) [index_option] ...
+  | ADD FULLTEXT [INDEX|KEY] [index_name]
+        (index_col_name,...) [index_option] ...
+  | ADD SPATIAL [INDEX|KEY] [index_name]
+        (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]]
+        FOREIGN KEY [index_name] (index_col_name,...)
+        reference_definition
+  | ALGORITHM [=] {DEFAULT|INPLACE|COPY}
+  | ALTER [COLUMN] col_name {SET DEFAULT literal | DROP DEFAULT}
+  | CHANGE [COLUMN] old_col_name new_col_name column_definition
+        [FIRST|AFTER col_name]
+  | LOCK [=] {DEFAULT|NONE|SHARED|EXCLUSIVE}
+  | MODIFY [COLUMN] col_name column_definition
+        [FIRST | AFTER col_name]
+  | DROP [COLUMN] col_name
+  | DROP PRIMARY KEY
+  | DROP {INDEX|KEY} index_name
+  | DROP FOREIGN KEY fk_symbol
+  | DISABLE KEYS
+  | ENABLE KEYS
+  | RENAME [TO|AS] new_tbl_name
+  | RENAME {INDEX|KEY} old_index_name TO new_index_name
+  | ORDER BY col_name [, col_name] ...
+  | CONVERT TO CHARACTER SET charset_name [COLLATE collation_name]
+  | [DEFAULT] CHARACTER SET [=] charset_name [COLLATE [=] collation_name]
+  | DISCARD TABLESPACE
+  | IMPORT TABLESPACE
+  | FORCE
+  | {WITHOUT|WITH} VALIDATION
+  | ADD PARTITION (partition_definition)
+  | DROP PARTITION partition_names
+  | DISCARD PARTITION {partition_names | ALL} TABLESPACE
+  | IMPORT PARTITION {partition_names | ALL} TABLESPACE
+  | TRUNCATE PARTITION {partition_names | ALL}
+  | COALESCE PARTITION number
+  | REORGANIZE PARTITION partition_names INTO (partition_definitions)
+  | EXCHANGE PARTITION partition_name WITH TABLE tbl_name [{WITH|WITHOUT} VALIDATION]
+  | ANALYZE PARTITION {partition_names | ALL}
+  | CHECK PARTITION {partition_names | ALL}
+  | OPTIMIZE PARTITION {partition_names | ALL}
+  | REBUILD PARTITION {partition_names | ALL}
+  | REPAIR PARTITION {partition_names | ALL}
+  | REMOVE PARTITIONING
+  | UPGRADE PARTITIONING
+
+index_col_name:
+    col_name [(length)] [ASC | DESC]
+
+index_type:
+    USING {BTREE | HASH}
+
+index_option:
+    KEY_BLOCK_SIZE [=] value
+  | index_type
+  | WITH PARSER parser_name
+  | COMMENT 'string'
+
+table_options:
+    table_option [[,] table_option] ...
+
+table_option:
+    ENGINE [=] engine_name
+  | AUTO_INCREMENT [=] value
+  | AVG_ROW_LENGTH [=] value
+  | [DEFAULT] CHARACTER SET [=] charset_name
+  | CHECKSUM [=] {0 | 1}
+  | [DEFAULT] COLLATE [=] collation_name
+  | COMMENT [=] 'string'
+  | COMPRESSION [=] {'ZLIB'|'LZ4'|'NONE'}
+  | CONNECTION [=] 'connect_string'
+  | DATA DIRECTORY [=] 'absolute path to directory'
+  | DELAY_KEY_WRITE [=] {0 | 1}
+  | ENCRYPTION [=] {'Y' | 'N'}
+  | INDEX DIRECTORY [=] 'absolute path to directory'
+  | INSERT_METHOD [=] { NO | FIRST | LAST }
+  | KEY_BLOCK_SIZE [=] value
+  | MAX_ROWS [=] value
+  | MIN_ROWS [=] value
+  | PACK_KEYS [=] {0 | 1 | DEFAULT}
+  | PASSWORD [=] 'string'
+  | ROW_FORMAT [=] {DEFAULT|DYNAMIC|FIXED|COMPRESSED|REDUNDANT|COMPACT}
+  | STATS_AUTO_RECALC [=] {DEFAULT|0|1}
+  | STATS_PERSISTENT [=] {DEFAULT|0|1}
+  | STATS_SAMPLE_PAGES [=] value
+  | TABLESPACE tablespace_name [STORAGE {DISK|MEMORY|DEFAULT}]
+  | UNION [=] (tbl_name[,tbl_name]...)
+
+partition_options:
+    (see CREATE TABLE options)
+
+ALTER TABLE changes the structure of a table. For example, you can add
+or delete columns, create or destroy indexes, change the type of
+existing columns, or rename columns or the table itself. You can also
+change characteristics such as the storage engine used for the table or
+the table comment.
+
+o To use ALTER TABLE, you need ALTER, CREATE, and INSERT privileges for
+  the table. Renaming a table requires ALTER and DROP on the old table,
+  ALTER, CREATE, and INSERT on the new table.
+
+o Following the table name, specify the alterations to be made. If none
+  are given, ALTER TABLE does nothing.
+
+o The syntax for many of the permissible alterations is similar to
+  clauses of the CREATE TABLE statement. column_definition clauses use
+  the same syntax for ADD and CHANGE as for CREATE TABLE. See [HELP
+  CREATE TABLE], for more information.
+
+o The word COLUMN is optional and can be omitted.
+
+o You can issue multiple ADD, ALTER, DROP, and CHANGE clauses in a
+  single ALTER TABLE statement, separated by commas. This is a MySQL
+  extension to standard SQL, which permits only one of each clause per
+  ALTER TABLE statement. For example, to drop multiple columns in a
+  single statement, do this:
+
+ALTER TABLE t2 DROP COLUMN c, DROP COLUMN d;
+
+o Some operations may result in warnings if attempted on a table for
+  which the storage engine does not support the operation. These
+  warnings can be displayed with SHOW WARNINGS. See [HELP SHOW
+  WARNINGS]. For information on troubleshooting ALTER TABLE, see
+  http://dev.mysql.com/doc/refman/5.7/en/alter-table-problems.html.
+
+o For usage examples, see
+  http://dev.mysql.com/doc/refman/5.7/en/alter-table-examples.html.
+
+o For information about generated columns, see
+  http://dev.mysql.com/doc/refman/5.7/en/alter-table-generated-columns.
+  html.
+
+o With the mysql_info() C API function, you can find out how many rows
+  were copied by ALTER TABLE. See
+  http://dev.mysql.com/doc/refman/5.7/en/mysql-info.html.
+
+URL: http://dev.mysql.com/doc/refman/5.7/en/alter-table.html
+
+
+mysql> ALTER TABLE groce ADD (NAME TEXT, QUANTITY INTEGER);
+ERROR 1060 (42S21): Duplicate column name 'NAME'
+mysql> ALTER TABLE groce ADD ('NAME' TEXT, 'QUANTITY' INTEGER);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NAME' TEXT, 'QUANTITY' INTEGER)' at line 1
+mysql> ALTER TABLE groce ADD ('NAME' , 'QUANTITY' );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''NAME' , 'QUANTITY' )' at line 1
+mysql> ALTER TABLE groce ADD (NAME VARCHAR(20)
+    -> );
+ERROR 1060 (42S21): Duplicate column name 'NAME'
+mysql> ALTER TABLE groce ADD (NUMBER VARCHAR(20) );
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| CATALOGUE             |
+| GRO                   |
+| MY_STUDENT01          |
+| STUDENT5              |
+| groce                 |
+| groceries             |
+| user_details          |
+| user_details2         |
++-----------------------+
+8 rows in set (0.00 sec)
+
+mysql> EXPLAIN GROCE;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | int(11)     | NO   | PRI | NULL    |       |
+| NUMBER | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> ALTER TABLE groce ADD (QUANTITYNAME TEXT );
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE groce ADD (QUANTITYNAMEW  );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> ALTER TABLE groce ADD ('QUANTITYNAMEW'  );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''QUANTITYNAMEW'  )' at line 1
+mysql> EXPLAIN GROCE;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| name         | int(11)     | NO   | PRI | NULL    |       |
+| NUMBER       | varchar(20) | YES  |     | NULL    |       |
+| QUANTITYNAME | text        | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> INSECT INTO GROCE (1,'OBI',ENOUGH);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSECT INTO GROCE (1,'OBI',ENOUGH)' at line 1
+mysql> INSECT INTO GROCE (1,'OBI','ENOUGH');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSECT INTO GROCE (1,'OBI','ENOUGH')' at line 1
+mysql> INSECT INTO GROCE VALUES (1,'OBI','ENOUGH');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSECT INTO GROCE VALUES (1,'OBI','ENOUGH')' at line 1
+mysql> INSE INTO GROCE VALUES (1,'OBI','ENOUGH');
+INSENSITIVE   INSERT        INSERT_METHOD
+mysql> INSERT INTO GROCE VALUES (1,'OBI','ENOUGH');
+ERROR 1062 (23000): Duplicate entry '1' for key 'PRIMARY'
+mysql> INSERT INTO GROCE VALUES (2,'OBI','ENOUGH');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT *FROM GROCE;
++------+--------+--------------+
+| name | NUMBER | QUANTITYNAME |
++------+--------+--------------+
+|    1 | NULL   | NULL         |
+|    2 | OBI    | ENOUGH       |
++------+--------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT NUMBER FROM GROCE;
++--------+
+| NUMBER |
++--------+
+| NULL   |
+| OBI    |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| CATALOGUE             |
+| GRO                   |
+| MY_STUDENT01          |
+| STUDENT5              |
+| groce                 |
+| groceries             |
+| user_details          |
+| user_details2         |
++-----------------------+
+8 rows in set (0.00 sec)
+
+mysql> SE
+SEC_TO_TIME        SECURITY           SEPARATOR          SESSION           
+SECOND             SELECT             SERIAL             SESSION_USER      
+SECOND_MICROSECOND SENSITIVE          SERIALIZABLE       SET               
+mysql> EXP
+EXP        EXPANSION  EXPLAIN    EXPORT_SET
+mysql> EXPLAIN CATALOGUE;
++----------+---------+------+-----+---------+-------+
+| Field    | Type    | Null | Key | Default | Extra |
++----------+---------+------+-----+---------+-------+
+| id       | int(11) | NO   | PRI | NULL    |       |
+| Name     | text    | YES  |     | NULL    |       |
+| obi      | text    | YES  |     | NULL    |       |
+| ADA      | text    | YES  |     | NULL    |       |
+| QUantity | int(11) | YES  |     | NULL    |       |
++----------+---------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT QUANTITY FROM CATALOGUE;
+Empty set (0.00 sec)
+
+mysql> SELECT *FROM CATALOGUE;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO CATALOGUE VALUES (1,'MIKE', 'OBI','NULL',20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO CATALOGUE VALUES (2 'ME' 'ADA' 'NULL' 30);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''ME' 'ADA' 'NULL' 30)' at line 1
+mysql> INSERT INTO CATALOGUE VALUES (2,'ME', 'AI','NULL',30);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM CATALOGUE;
++----+------+------+------+----------+
+| id | Name | obi  | ADA  | QUantity |
++----+------+------+------+----------+
+|  1 | MIKE | OBI  | NULL |       20 |
+|  2 | ME   | AI   | NULL |       30 |
++----+------+------+------+----------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO CATALOGUE VALUES (2,'MEKUS', 'HA',2);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO CATALOGUE VALUES (2,'MEKUS', 'HA',QUantity 2);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2)' at line 1
+mysql> INSERT INTO CATALOGUE VALUES (2,'MEKUS', 'HA','QU', 2);
+ERROR 1062 (23000): Duplicate entry '2' for key 'PRIMARY'
+mysql> INSERT INTO CATALOGUE VALUES (3,'MEKUS', 'HA','QU', 2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT *FROM CATALOGUE;
++----+-------+------+------+----------+
+| id | Name  | obi  | ADA  | QUantity |
++----+-------+------+------+----------+
+|  1 | MIKE  | OBI  | NULL |       20 |
+|  2 | ME    | AI   | NULL |       30 |
+|  3 | MEKUS | HA   | QU   |        2 |
++----+-------+------+------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *FROM CATALOGUE ORDER BY QUANTITY;
++----+-------+------+------+----------+
+| id | Name  | obi  | ADA  | QUantity |
++----+-------+------+------+----------+
+|  3 | MEKUS | HA   | QU   |        2 |
+|  1 | MIKE  | OBI  | NULL |       20 |
+|  2 | ME    | AI   | NULL |       30 |
++----+-------+------+------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *FROM CATALOGUE WHERE QUANTITY>3 ORDER BY QUANTITY;
++----+------+------+------+----------+
+| id | Name | obi  | ADA  | QUantity |
++----+------+------+------+----------+
+|  1 | MIKE | OBI  | NULL |       20 |
+|  2 | ME   | AI   | NULL |       30 |
++----+------+------+------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT SUM(QUANTITY) FROM CATALOGUE;
++---------------+
+| SUM(QUANTITY) |
++---------------+
+|            52 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(QUANTITY) FROM CATALOGUE;
++---------------+
+| MAX(QUANTITY) |
++---------------+
+|            30 |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT SUM(QUANTITY) FROM CATALOGUE GROUP BY QUANTITY;
++---------------+
+| SUM(QUANTITY) |
++---------------+
+|             2 |
+|            20 |
+|            30 |
++---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT NAME SUM(QUANTITY) FROM CATALOGUE GROUP BY QUANTITY;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SUM(QUANTITY) FROM CATALOGUE GROUP BY QUANTITY' at line 1
+mysql> SELECT NAME, SUM(QUANTITY) FROM CATALOGUE GROUP BY QUANTITY;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'my_database.CATALOGUE.Name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT Name, SUM(QUANTITY) FROM CATALOGUE GROUP BY QUANTITY;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'my_database.CATALOGUE.Name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT quantity, SUM(QUANTITY) FROM CATALOGUE GROUP BY QUANTITY;
++----------+---------------+
+| quantity | SUM(QUANTITY) |
++----------+---------------+
+|        2 |             2 |
+|       20 |            20 |
+|       30 |            30 |
++----------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT name, SUM(QUANTITY) FROM CATALOGUE GROUP BY QUANTITY;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'my_database.CATALOGUE.Name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT *FROM gro;
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  1 | BANA   |        4 |     7 |
+|  2 | ORANGE |        5 |     8 |
+|  3 | MANGO  |        1 |     4 |
++----+--------+----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GRO WHERE QUANTITY>2 AND aisle>7.5;
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  2 | ORANGE |        5 |     8 |
++----+--------+----------+-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT *FROM GRO WHERE NAME='ORANGE';
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  2 | ORANGE |        5 |     8 |
++----+--------+----------+-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT *FROM GRO WHERE NAME IN (SELECT NAME FROM GRO);
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  1 | BANA   |        4 |     7 |
+|  2 | ORANGE |        5 |     8 |
+|  3 | MANGO  |        1 |     4 |
++----+--------+----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GRO WHERE NAME IN (SELECT NAME FROM GRO WHERE NAME LIKE '%AN%');
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  1 | BANA   |        4 |     7 |
+|  2 | ORANGE |        5 |     8 |
+|  3 | MANGO  |        1 |     4 |
++----+--------+----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GRO WHERE NAME IN (SELECT NAME FROM GRO WHERE NAME LIKE '%GE%');
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  2 | ORANGE |        5 |     8 |
++----+--------+----------+-------+
+1 row in set (0.00 sec)
+
+mysql> SELECT *FROM GRO WHERE NAME IN (SELECT NAME FROM GRO WHERE NAME LIKE '%G%');
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  2 | ORANGE |        5 |     8 |
+|  3 | MANGO  |        1 |     4 |
++----+--------+----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT NAME FROM GRO WHERE NAME LIKE '%G%');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> SELECT NAME FROM GRO WHERE NAME LIKE '%G%';
++--------+
+| NAME   |
++--------+
+| ORANGE |
+| MANGO  |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GRO WHERE NAME LIKE '%G%';
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  2 | ORANGE |        5 |     8 |
+|  3 | MANGO  |        1 |     4 |
++----+--------+----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM GRO;
++----------+
+| COUNT(*) |
++----------+
+|        3 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM GRO WHERE QUANTITY =5;
++----------+
+| COUNT(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM GRO WHERE QUANTITY >2;
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT FROM GRO WHERE QUANTITY >2;
+ERROR 1054 (42S22): Unknown column 'COUNT' in 'field list'
+mysql> SELECT COUNT() FROM GRO WHERE QUANTITY >2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') FROM GRO WHERE QUANTITY >2' at line 1
+mysql> SELECT COUNT(QUANTITY) FROM GRO WHERE QUANTITY >2;
++-----------------+
+| COUNT(QUANTITY) |
++-----------------+
+|               2 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(QUANTITY) FROM GRO WHERE QUANTITY =>ROUND(mysql> SELECT COUNT(QUANTITY) FROM GRO WHERE QUANTITY3;
+ERROR 1054 (42S22): Unknown column 'AIY' in 'where clause'
+mysql> SELECT COUNT(QUANTITY) FROM GRO WHERE (QUANTITY-AISLE)>3;
++-----------------+
+| COUNT(QUANTITY) |
++-----------------+
+|               0 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(QUANTITY) FROM GRO WHERE (QUANTITY-AISLE)<3;
++-----------------+
+| COUNT(QUANTITY) |
++-----------------+
+|               3 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(QUANTITY) FROM GRO AS TOTAL WHERE (QUANTITY-AISLE)<3;
++-----------------+
+| COUNT(QUANTITY) |
++-----------------+
+|               3 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(QUANTITY) FROM GRO AS 'TOTAL' WHERE (QUANTITY-AISLE)<3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''TOTAL' WHERE (QUANTITY-AISLE)<3' at line 1
+mysql> SELECT * FROM GRO WHERE (QUANTITY-AISLE)<3;
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  1 | BANA   |        4 |     7 |
+|  2 | ORANGE |        5 |     8 |
+|  3 | MANGO  |        1 |     4 |
++----+--------+----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM GRO (QUANTITY-AISLE);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(QUANTITY-AISLE)' at line 1
+mysql> SELECT (QUANTITY-AISLE) FROM GRO;
++------------------+
+| (QUANTITY-AISLE) |
++------------------+
+|               -3 |
+|               -3 |
+|               -3 |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT (QUANTITY-ID) FROM GRO;
++---------------+
+| (QUANTITY-ID) |
++---------------+
+|             3 |
+|             3 |
+|            -2 |
++---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT (QUANTITY-ID) FROM GRO ORDER ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> SELECT (QUANTITY-ID) FROM GRO ORDER BY (QUANTITY-ID) ;
++---------------+
+| (QUANTITY-ID) |
++---------------+
+|            -2 |
+|             3 |
+|             3 |
++---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT NAME, (QUANTITY-ID) FROM GRO ORDER BY (QUANTITY-ID) ;
++--------+---------------+
+| NAME   | (QUANTITY-ID) |
++--------+---------------+
+| MANGO  |            -2 |
+| BANA   |             3 |
+| ORANGE |             3 |
++--------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *, (QUANTITY-ID) FROM GRO ORDER BY (QUANTITY-ID) ;
++----+--------+----------+-------+---------------+
+| id | name   | quantity | aisle | (QUANTITY-ID) |
++----+--------+----------+-------+---------------+
+|  3 | MANGO  |        1 |     4 |            -2 |
+|  1 | BANA   |        4 |     7 |             3 |
+|  2 | ORANGE |        5 |     8 |             3 |
++----+--------+----------+-------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *, (QUANTITY-ID) FROM GRO ORDER BY (QUANTITY-ID) 
+    -> CASE
+    -> WHEN QUANTITY>3 THEN 'GOOD'
+    -> ELSE 'NOT VERY GOOD'
+    -> END as 'comments'
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CASE
+WHEN QUANTITY>3 THEN 'GOOD'
+ELSE 'NOT VERY GOOD'
+END as 'comments'
+)' at line 2
+mysql> SELECT *, 
+    -> CASE
+    -> WHEN QUANTITY>3 THEN 'GOOD'                                                                                       -> ELSE 'NOT VERY GOOD'                                                                                              -> END as 'comments'                                                                                                 -> FROM GRO ORDER BY (QUANTITY-ID);
++----+--------+----------+-------+---------------+
+| id | name   | quantity | aisle | comments      |
++----+--------+----------+-------+---------------+
+|  3 | MANGO  |        1 |     4 | NOT VERY GOOD |
+|  1 | BANA   |        4 |     7 | GOOD          |
+|  2 | ORANGE |        5 |     8 | GOOD          |
++----+--------+----------+-------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GRO;
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  1 | BANA   |        4 |     7 |
+|  2 | ORANGE |        5 |     8 |
+|  3 | MANGO  |        1 |     4 |
++----+--------+----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*), CASE WHEN QUANTITY>3 THEN 'GOOD' ELSE 'NOT VERY GOOD' END as 'comments' FROM GRO );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> SELECT *,
+    -> ^C
+mysql> SELECT COUNT( *),
+    -> CASE
+    -> WHEN QUANTITY>3 THEN 'GOOD'
+    -> ELSE 'NOT VERY GOOD'
+    -> END as 'comments'
+    -> FROM GRO ORDER BY (QUANTITY-ID);                                                                              ERROR 1140 (42000): In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'my_database.GRO.quantity'; this is incompatible with sql_mode=only_full_group_by
+mysql> show tables;
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    6
+Current database: MY_DATABASE
+
++-----------------------+
+| Tables_in_my_database |
++-----------------------+
+| CATALOGUE             |
+| GRO                   |
+| MY_STUDENT01          |
+| STUDENT5              |
+| groce                 |
+| groceries             |
+| user_details          |
+| user_details2         |
++-----------------------+
+8 rows in set (0.02 sec)
+
+mysql> SELECT COUNT(*) TABLES;
++--------+
+| TABLES |
++--------+
+|      1 |
++--------+
+1 row in set (0.01 sec)
+
+mysql> COUNT(*) TABLES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'COUNT(*) TABLES' at line 1
+mysql> COUNT TABLES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'COUNT TABLES' at line 1
+mysql> HELP COUNT
+Name: 'COUNT'
+Description:
+Syntax:
+COUNT(expr)
+
+Returns a count of the number of non-NULL values of expr in the rows
+retrieved by a SELECT statement. The result is a BIGINT value.
+
+If there are no matching rows, COUNT() returns 0.
+
+URL: http://dev.mysql.com/doc/refman/5.7/en/group-by-functions.html
+
+Examples:
+mysql> SELECT student.student_name,COUNT(*)
+    ->        FROM student,course
+    ->        WHERE student.student_id=course.student_id
+    ->        GROUP BY student_name;
+
+mysql> SELECT *FROM GRO, GROCE;
++----+--------+----------+-------+------+--------+--------------+
+| id | name   | quantity | aisle | name | NUMBER | QUANTITYNAME |
++----+--------+----------+-------+------+--------+--------------+
+|  1 | BANA   |        4 |     7 |    1 | NULL   | NULL         |
+|  1 | BANA   |        4 |     7 |    2 | OBI    | ENOUGH       |
+|  2 | ORANGE |        5 |     8 |    1 | NULL   | NULL         |
+|  2 | ORANGE |        5 |     8 |    2 | OBI    | ENOUGH       |
+|  3 | MANGO  |        1 |     4 |    1 | NULL   | NULL         |
+|  3 | MANGO  |        1 |     4 |    2 | OBI    | ENOUGH       |
++----+--------+----------+-------+------+--------+--------------+
+6 rows in set (0.01 sec)
+
+mysql> SELECT *FROM GRO;
++----+--------+----------+-------+
+| id | name   | quantity | aisle |
++----+--------+----------+-------+
+|  1 | BANA   |        4 |     7 |
+|  2 | ORANGE |        5 |     8 |
+|  3 | MANGO  |        1 |     4 |
++----+--------+----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GROCE;
++------+--------+--------------+
+| name | NUMBER | QUANTITYNAME |
++------+--------+--------------+
+|    1 | NULL   | NULL         |
+|    2 | OBI    | ENOUGH       |
++------+--------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GROCE WHERE ID=NAME;
+ERROR 1054 (42S22): Unknown column 'ID' in 'where clause'
+mysql> SELECT *FROM GROCE 
+    -> WHERE ID=NAME;
+ERROR 1054 (42S22): Unknown column 'ID' in 'where clause'
+mysql> SELECT *FROM GROCE WHERE 'ID'='NAME';
+Empty set (0.00 sec)
+
+mysql> SELECT *FROM GROCE WHERE 'QUANTITY'='NAME';
+Empty set (0.00 sec)
+
+mysql> SELECT *FROM GROCE WHERE QUANTITY=NAME;
+ERROR 1054 (42S22): Unknown column 'QUANTITY' in 'where clause'
+mysql> SELECT *FROM GROCE, GRO
+    -> WHERE ID=NAME;
+ERROR 1052 (23000): Column 'NAME' in where clause is ambiguous
+mysql> SELECT *FROM GROCE, GRO
+    -> WHERE GRO.ID=GROCE.NAME;
++------+--------+--------------+----+--------+----------+-------+
+| name | NUMBER | QUANTITYNAME | id | name   | quantity | aisle |
++------+--------+--------------+----+--------+----------+-------+
+|    1 | NULL   | NULL         |  1 | BANA   |        4 |     7 |
+|    2 | OBI    | ENOUGH       |  2 | ORANGE |        5 |     8 |
++------+--------+--------------+----+--------+----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GROCE, GRO WHERE GRO.ID LIKE GROCE.NAME;
++------+--------+--------------+----+--------+----------+-------+
+| name | NUMBER | QUANTITYNAME | id | name   | quantity | aisle |
++------+--------+--------------+----+--------+----------+-------+
+|    1 | NULL   | NULL         |  1 | BANA   |        4 |     7 |
+|    2 | OBI    | ENOUGH       |  2 | ORANGE |        5 |     8 |
++------+--------+--------------+----+--------+----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT *FROM GROCE
+    -> JOIN GRO
+    -> ON GRO.ID=GROCE.NAME;
++------+--------+--------------+----+--------+----------+-------+
+| name | NUMBER | QUANTITYNAME | id | name   | quantity | aisle |
++------+--------+--------------+----+--------+----------+-------+
+|    1 | NULL   | NULL         |  1 | BANA   |        4 |     7 |
+|    2 | OBI    | ENOUGH       |  2 | ORANGE |        5 |     8 |
++------+--------+--------------+----+--------+----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> /*MM*/
+mysql> /J/
+    -> ^C
+mysql> #
+mysql> #HHSHSHHHS
+mysql> SELECT *FROM GROCE, GRO
+    -> LEFT OUTER JOIN GRO
+    -> ON GRO.ID=GROCE.NAME;
+ERROR 1066 (42000): Not unique table/alias: 'GRO'
+mysql> SELECT *FROM GROCE
+    -> LEFT OUTER JOIN GRO
+    -> ON GRO.ID=GROCE.NAME;
++------+--------+--------------+------+--------+----------+-------+
+| name | NUMBER | QUANTITYNAME | id   | name   | quantity | aisle |
++------+--------+--------------+------+--------+----------+-------+
+|    1 | NULL   | NULL         |    1 | BANA   |        4 |     7 |
+|    2 | OBI    | ENOUGH       |    2 | ORANGE |        5 |     8 |
++------+--------+--------------+------+--------+----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE GROCE SET QUANTITYNAME='QUANTITYCOMMENT';
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT *GROCE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROCE' at line 1
+mysql> SELECT *FROM GROCE;
++------+--------+-----------------+
+| name | NUMBER | QUANTITYNAME    |
++------+--------+-----------------+
+|    1 | NULL   | QUANTITYCOMMENT |
+|    2 | OBI    | QUANTITYCOMMENT |
++------+--------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE GROCE SET QUANTITYNAME='SMALL' WHERE NAME =1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT *FROM GROCE;
++------+--------+-----------------+
+| name | NUMBER | QUANTITYNAME    |
++------+--------+-----------------+
+|    1 | NULL   | SMALL           |
+|    2 | OBI    | QUANTITYCOMMENT |
++------+--------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT TABLES();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> SELECT TABLES(*);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(*)' at line 1
+mysql> SELECT * FROM TABLES();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> SELECT DATABASE();
++-------------+
+| DATABASE()  |
++-------------+
+| my_database |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE DAT
+DATA        DATABASE    DATABASES   DATE        DATE_ADD    DATE_FORMAT DATE_SUB    DATEDIFF    DATETIME   
+mysql> UPDATE MY_DATABASE SET GROCE='NO' WHERE GROCE=NUMBER;
+ERROR 1146 (42S02): Table 'my_database.my_database' doesn't exist
+mysql> UPDATE GROCE SET GROCE='NO' WHERE GROCE=NUMBER;
+ERROR 1054 (42S22): Unknown column 'GROCE' in 'where clause'
+mysql> UPDATE GROCE SET NUMBER='NO' WHERE NUMBER='NULL';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> SELECT *FROM GROCE;
++------+--------+-----------------+
+| name | NUMBER | QUANTITYNAME    |
++------+--------+-----------------+
+|    1 | NULL   | SMALL           |
+|    2 | OBI    | QUANTITYCOMMENT |
++------+--------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE GROCE SET NUMBER='NO' WHERE NAME='NULL';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> SELECT *FROM GROCE;
++------+--------+-----------------+
+| name | NUMBER | QUANTITYNAME    |
++------+--------+-----------------+
+|    1 | NULL   | SMALL           |
+|    2 | OBI    | QUANTITYCOMMENT |
++------+--------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE GROCE SET NUMBER='NO' WHERE NAME='OBI';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> SELECT *FROM GROCE;
++------+--------+-----------------+
+| name | NUMBER | QUANTITYNAME    |
++------+--------+-----------------+
+|    1 | NULL   | SMALL           |
+|    2 | OBI    | QUANTITYCOMMENT |
++------+--------+-----------------+
+2 rows in set (0.01 sec)
+
+mysql> UPDATE GROCE SET NUMBER='NO' WHERE NAME='1';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT *FROM GROCE;
++------+--------+-----------------+
+| name | NUMBER | QUANTITYNAME    |
++------+--------+-----------------+
+|    1 | NO     | SMALL           |
+|    2 | OBI    | QUANTITYCOMMENT |
++------+--------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> DELETE NAME WHERE NAME=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE NAME=1' at line 1
+mysql> DELETE  NAME FROM GROCE WHERE NAME=1;
+ERROR 1109 (42S02): Unknown table 'name' in MULTI DELETE
+mysql> DELETE  FROM GROCE WHERE NAME=1;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM GROCE;
++------+--------+-----------------+
+| name | NUMBER | QUANTITYNAME    |
++------+--------+-----------------+
+|    2 | OBI    | QUANTITYCOMMENT |
++------+--------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE GROCE ADD EMOTION TEXT default 'unknow';
+ERROR 1101 (42000): BLOB, TEXT, GEOMETRY or JSON column 'EMOTION' can't have a default value
+mysql> ALTER TABLE GROCE ADD EMOTION TEXT;
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *FROM GROCE;
++------+--------+-----------------+---------+
+| name | NUMBER | QUANTITYNAME    | EMOTION |
++------+--------+-----------------+---------+
+|    2 | OBI    | QUANTITYCOMMENT | NULL    |
++------+--------+-----------------+---------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE GROCE ADD EMOTION TEXT default 'unknown';
+ERROR 1101 (42000): BLOB, TEXT, GEOMETRY or JSON column 'EMOTION' can't have a default value
+mysql> ALTER TABLE GROCE ADD EMOTION1 TEXT default 'unknown';
+ERROR 1101 (42000): BLOB, TEXT, GEOMETRY or JSON column 'EMOTION1' can't have a default value
+mysql> ALTER TABLE GROCE ADD EMOTION1 TEXT ;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *FROM GROCE;
++------+--------+-----------------+---------+----------+
+| name | NUMBER | QUANTITYNAME    | EMOTION | EMOTION1 |
++------+--------+-----------------+---------+----------+
+|    2 | OBI    | QUANTITYCOMMENT | NULL    | NULL     |
++------+--------+-----------------+---------+----------+
+1 row in set (0.00 sec)
+
+mysql> NOW();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOW()' at line 1
+mysql> 
